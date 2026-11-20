@@ -20,7 +20,6 @@ public class ElevatorSystem {
     }
 
     // we can make a seperate class for floor
-    // we can make seperate class
     public void run() {
         int count = 0;
         while (!requests.isEmpty()) {

@@ -31,6 +31,10 @@ public class ScanElevatorController {
             System.out.println("Invalid floor " + floor);
             return;
         }
+        if (floor == elevator.getCurrentFloor()) {
+            System.out.println("already at floor " + floor);
+            return;
+        }
         if (!pending.contains(floor)) {
             pending.add(floor);
         }
@@ -53,7 +57,6 @@ public class ScanElevatorController {
             if (minAbove != Integer.MAX_VALUE) {
                 return minAbove;
             }
-
             // No more requests above, reverse direction to DOWN
             currentDirection = Direction.DOWN;
             int maxBelow = Integer.MIN_VALUE;
@@ -66,7 +69,7 @@ public class ScanElevatorController {
                 return maxBelow;
             }
         } else {
-            // Moving DOWN: find the closest requested floor below current floor
+            // find the closest requested floor below current floor
             int maxBelow = Integer.MIN_VALUE;
             for (int floor : pending) {
                 if (floor < currentFloor && floor > maxBelow) {

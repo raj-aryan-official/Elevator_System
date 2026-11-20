@@ -23,6 +23,10 @@ public class NearestElevatorController {
             System.out.println("Invalid floor " + floor);
             return;
         }
+        if (floor == elevator.getCurrentFloor()) {
+            System.out.println("already at floor " + floor);
+            return;
+        }
         if (!pending.contains(floor)) {
             pending.add(floor);
         }
